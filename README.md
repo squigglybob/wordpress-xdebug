@@ -1,11 +1,11 @@
-WordPress with XDebug for Docker
+Wordpress with XDebug for Docker
 ================================
 
-**It is intended for development environment only. Please do not use this in production environment. Please you the [official Docker WordPress image](https://hub.docker.com/_/wordpress) at production instead.**
+**It is intended for development environment only. Please do not use this in production environment. Please you the [official Docker Wordpress image](https://hub.docker.com/_/wordpress) at production instead.**
 
-XDebug has been added to the official WordPress Docker image here. The tag of the image corresponds to the tag of the official WordPress image.
+XDebug has been added to the official Wordpress Docker image here. The tag of the image corresponds to the tag of the official Wordpress image.
 
-E.g. `wpdiaries/wordpress-xdebug:6.3.1-php8.2-apache` means that the image has been created based on the image `wordpress:6.3.1-php8.2-apache`.
+E.g. `wpdiaries/wordpress-xdebug:6.0.1-php8.1-apache` means that the image has been created based on the image `wordpress:6.0.1-php8.1-apache`.
 
 But if you do not want to use the precompiled image, but wish to build the image yourself, you can clone this Git repository with the command:
 
@@ -37,7 +37,7 @@ services:
       WORDPRESS_DB_USER: mydbuser
       WORDPRESS_DB_PASSWORD: mydbpassword
       # Set the XDEBUG_CONFIG as described here: https://xdebug.org/docs/remote
-      XDEBUG_CONFIG: client_host=192.168.1.2
+      XDEBUG_CONFIG: remote_host=192.168.1.2
 
     depends_on:
       - db
@@ -52,7 +52,7 @@ services:
 
   db:
     container_name: mysql-wpd
-    image: mysql:8.0.33
+    image: mysql:8.0.20
     command: --default-authentication-plugin=mysql_native_password
     restart: always
 
